@@ -68,10 +68,8 @@ def readGtf(filename):
             continue
         t=l.strip().split('\t')
         if t[2]=='exon' or t[2]=='UTR':
-            if 'chr' not in t[0]:
-                chr = 'chr' + t[0]
             chr = t[0]
-            if chr.replace('chr','') not in chr_list:
+            if chr not in chr_list:
                 continue
             left = int(t[3])
             riht =  int(t[4])
@@ -168,7 +166,7 @@ def genomeIndex(genome, mode, tefile, genefile, outname, geneurls, teurls):
             t = l.strip().split('\t')
             
             if not tefile:
-                chr = t[5].replace('chr', '')
+                chr = t[5]
                 left = int(t[6])
                 rite = int(t[7])
                 name = t[10]
@@ -176,7 +174,7 @@ def genomeIndex(genome, mode, tefile, genefile, outname, geneurls, teurls):
                 if clas not in keepclas:
                     continue
             else:
-                chr = t[0].replace('chr', '')
+                chr = t[0]
                 left = int(t[1])
                 rite = int(t[2])
                 name = t[3]
@@ -309,7 +307,7 @@ def genomeIndex(genome, mode, tefile, genefile, outname, geneurls, teurls):
             t = l.strip().split('\t')
             
             if not tefile:
-                chr = t[5].replace('chr', '')
+                chr = t[5]
                 left = int(t[6])
                 rite = int(t[7])
                 name = t[10]
@@ -317,7 +315,7 @@ def genomeIndex(genome, mode, tefile, genefile, outname, geneurls, teurls):
                 if clas not in keepclas:
                     continue
             else:
-                chr = t[0].replace('chr', '')
+                chr = t[0]
                 left = int(t[1])
                 rite = int(t[2])
                 name = t[3]
