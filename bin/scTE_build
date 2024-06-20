@@ -14,9 +14,9 @@ from scTE.miniglbase import genelist, glload, location
 # edited: see https://github.com/JiekaiLab/scTE/issues/22 for details and the fix from the original developers
 # chr_list = [ str(k) for k in  list(range(1,50))] + ['X','Y', 'M']
 te_bed_path = os.getenv('SCTE_TE_BED')
-gene_gtf_path = os.getenv('SCTE_GENE_GTF')
+gene_bed_path = os.getenv('SCTE_GENE_BED')
 
-chr_list = list(set(genelist(filename=te_bed_path,format={'force_tsv':True,'name':0})['name']))
+chr_list = list(set(genelist(filename=te_bed_path,format={'force_tsv':True,'name':0})['name'] + genelist(filename=gene_bed_path,format={'force_tsv':True,'name':0})['name']))
 
 def read_opts(parser):
     args = parser.parse_args()
